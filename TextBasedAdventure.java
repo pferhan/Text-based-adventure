@@ -71,25 +71,52 @@ public class TextBasedAdventure {
         start();
     }
 
-
-
     public void fight() {
 
-        if(hasSword && hasPotion){
-            System.out.println("Would you like to use your potion or sword?\n1. Sword \n2. Potion");
+        if(hasSword && hasPotion && hasCheese){
+            System.out.println("Would you like to use your potion or sword?\n1. Sword \n2. Potion \n3. Cheese");
             int selection = keyboardInput.nextInt();
 
             if(selection == 1){
                 System.out.println("You defeat the giant with your sword and run out of the cave!");
-            }else{
+            }else if (selection == 2){
                 System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
+            } else if (selection == 3) {
+                System.out.println("You give the giant the cheese, he is from Wisconsin so he is grateful. You bond over this and take 20 minutes to say goodbye but he lets you go and invites you over for the next Packer game.");
             }
 
-        }else if(hasSword && !hasPotion){
+        }else if(!hasPotion && hasSword && !hasCheese){
             System.out.println("You defeat the giant with your sword and run out of the cave!");
-        } else if(hasPotion && !hasSword){
+        } else if(hasPotion && !hasSword && !hasCheese){
             System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
-        }else {
+        } else if (!hasPotion && !hasSword && hasCheese){
+            System.out.println("You give the giant the cheese, he is from Wisconsin so he is grateful. You bond over this and take 20 minutes to say goodbye but he lets you go and invites you over for the next Packer game.");
+        } else if (hasPotion && hasSword && !hasCheese){
+            System.out.println("Would you like to use your potion or sword?\n1. Sword \n2. Potion");
+            int selection = keyboardInput.nextInt();
+            if (selection == 1){
+                System.out.println("You defeat the giant with your sword and run out of the cave!");
+            } else {
+                System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
+            }
+        } else if (hasPotion && !hasSword && hasCheese){
+            System.out.println("Would you like to use your potion or sword?\n1. Potion \n2. Cheese");
+            int selection = keyboardInput.nextInt();
+            if (selection == 1){
+                System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
+            } else {
+                System.out.println("You give the giant the cheese, he is from Wisconsin so he is grateful. You bond over this and take 20 minutes to say goodbye but he lets you go and invites you over for the next Packer game.");
+            }
+        } else if (!hasPotion && hasSword && hasCheese){
+            System.out.println("Would you like to use your potion or sword?\n1. Sword \n2. Cheese");
+            int selection = keyboardInput.nextInt();
+            if (selection == 1){
+                System.out.println("You defeat the giant with your sword and run out of the cave!");
+            } else {
+                System.out.println("You give the giant the cheese, he is from Wisconsin so he is grateful. You bond over this and take 20 minutes to say goodbye but he lets you go and invites you over for the next Packer game.");
+            }
+        }  
+        else {
             System.out.println("You get stomped by the giant and red stuff goes everywhere.");
         }
     }
