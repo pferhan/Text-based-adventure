@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class TextBasedAdventure {
     boolean hasSword = false;
+    boolean hasShovel = false;
     Scanner keyboardInput = new Scanner(System.in);
 
     public void execute() {
@@ -23,7 +24,7 @@ public class TextBasedAdventure {
     }
 
     public void goLeft() {
-        System.out.println("Oh no! You run into a giant! Fight or flight?\n1. Fight \n2. Flight");
+        System.out.println("Oh no! You run into a giant! Fight or flight?\n1. Fight \n2. Flight \n3. Dig");
         int input = keyboardInput.nextInt();
         if (input == 1) {
             fight();
@@ -31,14 +32,19 @@ public class TextBasedAdventure {
         else if (input == 2) {
             start();
         }  
+        else if (input == 3) {
+            dig();
+        }
     }
 
     public void goRight() {
-        if (!hasSword) {
+        if (!hasSword && !hasShovel) {
             System.out.println("You find a sword on the ground!");
             hasSword = true;
+            System.out.println("You find a Shovel on the ground!");
+            hasShovel = true;
         }
-        else {
+        else{
             System.out.println("There's nothing here...");
         }
         start();
@@ -47,8 +53,18 @@ public class TextBasedAdventure {
     public void fight() {
         if (hasSword) {
             System.out.println("You defeat the giant with your sword and run out of the cave!");
-        } else {
+        }
+        else{
             System.out.println("You get stomped by the giant and red stuff goes everywhere.");
+        }
+    }
+
+    public void dig() {
+        if(!hasShovel) {
+            System.out.println("you get crushed by the giant you did not have the shovel");
+        }
+        else if(hasShovel) {
+            System.out.println("you dig out of the cave");
         }
     }
 
