@@ -12,7 +12,7 @@ public class TextBasedAdventure {
     int choice = rand.nextInt(2)+1;
 
     public void execute() {
-        System.out.println("Welcome to Escape from the Cave! Press enter when you are ready to start...");
+        System.out.println("Welcome to Escape from the Cave! You will be given a series of choices to decide your fate. When promted type 1 or 2 to make your selection then press enter. Have fun escaping the cave...hopefully you make it out! Press enter when you are ready to start...");
         keyboardInput.nextLine();
         System.out.println("You are trapped in a cave!");
         start();
