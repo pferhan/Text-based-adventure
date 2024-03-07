@@ -6,6 +6,7 @@ public class TextBasedAdventure {
     boolean hasSword = false;
     boolean hasPotion = false;
     boolean hasCheese = false;
+    boolean hasBook = false;
     Scanner keyboardInput = new Scanner(System.in);
 
     Random rand = new Random();
@@ -64,6 +65,9 @@ public class TextBasedAdventure {
         }else if(hasSword && !hasPotion){
             System.out.println("You have found a wizard, he has given you a magic potion!");
             hasPotion = true;
+        }else if(hasSword && hasGiantTranslotor){
+            System.out.println("You found a book lying on the ground.");
+            hasBook = true;
         }
         else {
             System.out.println("There's nothing here...");
