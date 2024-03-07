@@ -4,6 +4,7 @@ import java.util.Random;
 public class TextBasedAdventure {
     boolean hasGiantTranslotor;
     boolean hasSword = false;
+    boolean hasShovel = false;
     boolean hasPotion = false;
     boolean hasCheese = false;
     Scanner keyboardInput = new Scanner(System.in);
@@ -32,16 +33,19 @@ public class TextBasedAdventure {
     }
 
     public void goLeft() {
-        System.out.println("Oh no! You run into a giant! Fight or flight?\n1. Fight \n2. Flight \n3. Talk to it");
+        System.out.println("Oh no! You run into a giant! Fight or flight?\n1. Fight \n2. Flight \n3. Talk to it \n4. Dig out");
         int input = keyboardInput.nextInt();
         if (input == 1) {
             fight();
         }
         else if (input == 2) {
             start();
-        } 
-        else if(input == 3) {
+        }  
+        else if (input == 3) {
             talk();
+        } 
+        else if(input == 4) {
+            dig();
         }
     }
 
@@ -56,16 +60,18 @@ public class TextBasedAdventure {
     }
 
     public void goRight() {
-        if (!hasSword) {
+        if (!hasSword && !hasShovel) {
             System.out.println("You find a sword on the ground!");
             System.out.println("Next to the sword you also find a giant translator!");
             hasGiantTranslotor = true;
             hasSword = true;
+            System.out.println("You find a Shovel on the ground!");
+            hasShovel = true;
         }else if(hasSword && !hasPotion){
             System.out.println("You have found a wizard, he has given you a magic potion!");
             hasPotion = true;
         }
-        else {
+        else{
             System.out.println("There's nothing here...");
         }
         start();
@@ -94,6 +100,14 @@ public class TextBasedAdventure {
         }
     }
 
+    public void dig() {
+        if(!hasShovel) {
+            System.out.println("you get crushed by the giant you did not have the shovel");
+        }
+        else if(hasShovel) {
+            System.out.println("you dig out of the cave");
+        }
+    }
     public void talk() {
         if(hasGiantTranslotor) {
             System.out.println("You successfully comunicate with the giant. It agrees to let you pass.");
