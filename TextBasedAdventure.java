@@ -120,6 +120,7 @@ public class TextBasedAdventure {
             System.out.println("You get stomped by the giant and red stuff goes everywhere.");
         }
     }
+    
 
     public void talk() {
         if(hasGiantTranslotor) {
