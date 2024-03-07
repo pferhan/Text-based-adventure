@@ -6,15 +6,15 @@ public class TextBasedAdventure {
     boolean hasSword = false;
     boolean hasShovel = false;
     boolean hasPotion = false;
-    boolean shapeShift = false;
     boolean hasCheese = false;
+    boolean hasBook = false;
     Scanner keyboardInput = new Scanner(System.in);
 
     Random rand = new Random();
     int choice = rand.nextInt(2)+1;
 
     public void execute() {
-        System.out.println("Welcome to Escape from the Cave! Press enter when you are ready to start...");
+        System.out.println("Welcome to Escape from the Cave! You will be given a series of choices to decide your fate. When promted type 1 or 2 to make your selection then press enter. Have fun escaping the cave...hopefully you make it out! Press enter when you are ready to start...");
         keyboardInput.nextLine();
         System.out.println("You are trapped in a cave!");
         start();
@@ -34,7 +34,7 @@ public class TextBasedAdventure {
     }
 
     public void goLeft() {
-        System.out.println("Oh no! You run into a giant! Fight or flight?\n1. Fight \n2. Flight \n3. Talk to it \n4. Dig out \n5. Fight as oger");
+        System.out.println("Oh no! You run into a giant! Fight or flight?\n1. Fight \n2. Flight \n3. Talk to it \n4. Dig out");
         int input = keyboardInput.nextInt();
         if (input == 1) {
             fight();
@@ -48,9 +48,7 @@ public class TextBasedAdventure {
         else if(input == 4) {
             dig();
         }
-        else if(input == 5){
-            shift();
-        }
+
     }
 
     public void goStraight() {
@@ -74,10 +72,9 @@ public class TextBasedAdventure {
         }else if(hasSword && !hasPotion){
             System.out.println("You have found a wizard, he has given you a magic potion!");
             hasPotion = true;
-        }
-        else if(!shapeShift){
-            System.out.println("you become an oger");
-            shapeShift = true;
+        }else if(hasSword && hasGiantTranslotor){
+            System.out.println("You found a book lying on the ground.");
+            hasBook = true;
         }
         else{
             System.out.println("There's nothing here...");
@@ -85,31 +82,47 @@ public class TextBasedAdventure {
         start();
     }
 
-
-
     public void fight() {
 
-        if(hasSword && hasPotion){
+        if(hasSword && hasPotion && hasCheese){
+            System.out.println("you shape shift into an oger");
+           
+        }else if(!hasPotion && hasSword && !hasCheese){
+            System.out.println("You defeat the giant with your sword and run out of the cave!");
+        } else if(hasPotion && !hasSword && !hasCheese){
+            System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
+        } else if (!hasPotion && !hasSword && hasCheese){
+            System.out.println("You give the giant the cheese, he is from Wisconsin so he is grateful. You bond over this and take 20 minutes to say goodbye but he lets you go and invites you over for the next Packer game.");
+        } else if (hasPotion && hasSword && !hasCheese){
             System.out.println("Would you like to use your potion or sword?\n1. Sword \n2. Potion");
             int selection = keyboardInput.nextInt();
-
-            if(selection == 1){
+            if (selection == 1){
                 System.out.println("You defeat the giant with your sword and run out of the cave!");
-            }else{
+            } else {
                 System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
             }
-
-        }else if(hasSword && !hasPotion){
-            System.out.println("You defeat the giant with your sword and run out of the cave!");
-        } else if(hasPotion && !hasSword){
-            System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
-        }else if(shapeShift){
-            System.out.println("you defete the giant as an oger");
-        }
+        } else if (hasPotion && !hasSword && hasCheese){
+            System.out.println("Would you like to use your potion or sword?\n1. Potion \n2. Cheese");
+            int selection = keyboardInput.nextInt();
+            if (selection == 1){
+                System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
+            } else {
+                System.out.println("You give the giant the cheese, he is from Wisconsin so he is grateful. You bond over this and take 20 minutes to say goodbye but he lets you go and invites you over for the next Packer game.");
+            }
+        } else if (!hasPotion && hasSword && hasCheese){
+            System.out.println("Would you like to use your potion or sword?\n1. Sword \n2. Cheese");
+            int selection = keyboardInput.nextInt();
+            if (selection == 1){
+                System.out.println("You defeat the giant with your sword and run out of the cave!");
+            } else {
+                System.out.println("You give the giant the cheese, he is from Wisconsin so he is grateful. You bond over this and take 20 minutes to say goodbye but he lets you go and invites you over for the next Packer game.");
+            }
+        }  
         else {
             System.out.println("You get stomped by the giant and red stuff goes everywhere.");
         }
     }
+    
 
     public void dig() {
         if(!hasShovel) {
@@ -126,16 +139,6 @@ public class TextBasedAdventure {
             System.out.println("The giant can't understand you it crushes you with one punch.");
         }
     }
-
-    public void shift() {
-        if (!shapeShift) {
-            System.out.println("you get crushed you were not stong enough");
-        }
-        else if(shapeShift) {
-            System.out.println("you defeat the giant as an oger");
-        }
-    }
-
     public static void main(String[] args) {
         new TextBasedAdventure().execute();
     }
