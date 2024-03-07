@@ -48,6 +48,7 @@ public class TextBasedAdventure {
         else if(input == 4) {
             dig();
         }
+
     }
 
     public void goStraight() {
@@ -84,17 +85,8 @@ public class TextBasedAdventure {
     public void fight() {
 
         if(hasSword && hasPotion && hasCheese){
-            System.out.println("Would you like to use your potion or sword?\n1. Sword \n2. Potion \n3. Cheese");
-            int selection = keyboardInput.nextInt();
-
-            if(selection == 1){
-                System.out.println("You defeat the giant with your sword and run out of the cave!");
-            }else if (selection == 2){
-                System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
-            } else if (selection == 3) {
-                System.out.println("You give the giant the cheese, he is from Wisconsin so he is grateful. You bond over this and take 20 minutes to say goodbye but he lets you go and invites you over for the next Packer game.");
-            }
-
+            System.out.println("you shape shift into an oger");
+           
         }else if(!hasPotion && hasSword && !hasCheese){
             System.out.println("You defeat the giant with your sword and run out of the cave!");
         } else if(hasPotion && !hasSword && !hasCheese){
@@ -148,7 +140,6 @@ public class TextBasedAdventure {
             System.out.println("The giant can't understand you it crushes you with one punch.");
         }
     }
-
     public void finalRoom() {
         System.out.println("A old man blocks your way");
         if(hasCheese && hasGiantTranslotor && hasSword) {
