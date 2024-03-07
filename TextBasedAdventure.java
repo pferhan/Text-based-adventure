@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class TextBasedAdventure {
     boolean hasSword = false;
+    boolean hasPotion = false;
     Scanner keyboardInput = new Scanner(System.in);
 
     public void execute() {
@@ -37,6 +38,9 @@ public class TextBasedAdventure {
         if (!hasSword) {
             System.out.println("You find a sword on the ground!");
             hasSword = true;
+        }else if(hasSword && !hasPotion){
+            System.out.println("You have found a wizard, he has given you a magic potion!");
+            hasPotion = true;
         }
         else {
             System.out.println("There's nothing here...");
@@ -44,10 +48,25 @@ public class TextBasedAdventure {
         start();
     }
 
+
+
     public void fight() {
-        if (hasSword) {
+
+        if(hasSword && hasPotion){
+            System.out.println("Would you like to use your potion or sword?\n1. Sword \n2. Potion");
+            int selection = keyboardInput.nextInt();
+
+            if(selection == 1){
+                System.out.println("You defeat the giant with your sword and run out of the cave!");
+            }else{
+                System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
+            }
+
+        }else if(hasSword && !hasPotion){
             System.out.println("You defeat the giant with your sword and run out of the cave!");
-        } else {
+        } else if(hasPotion && !hasSword){
+            System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
+        }else {
             System.out.println("You get stomped by the giant and red stuff goes everywhere.");
         }
     }
