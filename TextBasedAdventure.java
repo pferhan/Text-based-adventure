@@ -6,6 +6,7 @@ public class TextBasedAdventure {
     boolean hasSword = false;
     boolean hasShovel = false;
     boolean hasPotion = false;
+    boolean shapeShift = false;
     boolean hasCheese = false;
     Scanner keyboardInput = new Scanner(System.in);
 
@@ -33,7 +34,7 @@ public class TextBasedAdventure {
     }
 
     public void goLeft() {
-        System.out.println("Oh no! You run into a giant! Fight or flight?\n1. Fight \n2. Flight \n3. Talk to it \n4. Dig out");
+        System.out.println("Oh no! You run into a giant! Fight or flight?\n1. Fight \n2. Flight \n3. Talk to it \n4. Dig out \n5. Fight as oger");
         int input = keyboardInput.nextInt();
         if (input == 1) {
             fight();
@@ -46,6 +47,9 @@ public class TextBasedAdventure {
         } 
         else if(input == 4) {
             dig();
+        }
+        else if(input == 5){
+            shift();
         }
     }
 
@@ -71,6 +75,10 @@ public class TextBasedAdventure {
             System.out.println("You have found a wizard, he has given you a magic potion!");
             hasPotion = true;
         }
+        else if(!shapeShift){
+            System.out.println("you become an oger");
+            shapeShift = true;
+        }
         else{
             System.out.println("There's nothing here...");
         }
@@ -95,7 +103,10 @@ public class TextBasedAdventure {
             System.out.println("You defeat the giant with your sword and run out of the cave!");
         } else if(hasPotion && !hasSword){
             System.out.println("You give the giant the potion, he falls asleep, and you run out of the cave!");
-        }else {
+        }else if(shapeShift){
+            System.out.println("you defete the giant as an oger");
+        }
+        else {
             System.out.println("You get stomped by the giant and red stuff goes everywhere.");
         }
     }
@@ -113,6 +124,15 @@ public class TextBasedAdventure {
             System.out.println("You successfully comunicate with the giant. It agrees to let you pass.");
         } else {
             System.out.println("The giant can't understand you it crushes you with one punch.");
+        }
+    }
+
+    public void shift() {
+        if (!shapeShift) {
+            System.out.println("you get crushed you were not stong enough");
+        }
+        else if(shapeShift) {
+            System.out.println("you defeat the giant as an oger");
         }
     }
 
