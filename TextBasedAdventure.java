@@ -71,6 +71,7 @@ public class TextBasedAdventure {
         if (hasSword) {
             if(choice == 1){
                 System.out.println("You defeat the giant with your sword and run out of the cave!");
+                finalRoom();
             }else{
                 System.out.println("You get stomped by the giant and red stuff goes everywhere.");
             }
@@ -82,8 +83,18 @@ public class TextBasedAdventure {
     public void talk() {
         if(hasGiantTranslotor) {
             System.out.println("You successfully comunicate with the giant. It agrees to let you pass.");
+            finalRoom();
         } else {
             System.out.println("The giant can't understand you it crushes you with one punch.");
+        }
+    }
+
+    public void finalRoom() {
+        System.out.println("A old man blocks your way");
+        if(hasCheese && hasGiantTranslotor && hasSword) {
+            System.out.println("The old man takes the cheese, sword, and giant translator from you and moves out of the way");
+        } else {
+            System.out.println("The old man stops you from exiting, you are now trapped in the cave for eternity");
         }
     }
 
